@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<MenuBar
+	xmlns="http://javafx.com/javafx/8.0.40"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.imatia.elastic.MenuBar">
+	<menus>
+		<Menu
+			mnemonicParsing="false"
+			text="Actualizaciones">
+			<items>
+				<MenuItem
+					fx:id="openMainForm"
+					mnemonicParsing="false"
+					onAction="#openMainForm"
+					text="Inicio" />
+				<MenuItem
+					fx:id="openApplicationsForm"
+					mnemonicParsing="false"
+					onAction="#openApplicationsForm"
+					text="Añadir aplicación" />
+				<MenuItem
+					fx:id="doExit"
+					mnemonicParsing="false"
+					onAction="#doExit"
+					text="Salir" />
+			</items>
+		</Menu>
+	</menus>
+</MenuBar>

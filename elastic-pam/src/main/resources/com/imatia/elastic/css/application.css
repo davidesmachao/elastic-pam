@@ -1,0 +1,23 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.menu-button {
+    -fx-text-fill: white;
+    -fx-background-color: #1d2b36;
+    -fx-border-width: 2px;
+    -fx-border-color: #1d2b36;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: #708596;
+    -fx-padding: 5;
+}
+
+.menu-button:hover{
+    -fx-text-fill: #86a3b3;
+    -fx-border-width: 2px;
+    -fx-border-color: #1d2b36;
+}
+
+
+.menu-background {
+	-fx-background-color: #1d2b36;
+}
