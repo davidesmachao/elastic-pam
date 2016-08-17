@@ -1,0 +1,96 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.form-background {
+	-fx-background-color: #ededed;
+}
+
+/*
+ * BUTTONS
+ */
+.table-button-add, .table-button-remove {
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+}
+
+.table-button-add {
+	-fx-graphic: url("../icons/ic_add_15px.png");
+}
+
+.table-button-add:hover {
+	-fx-graphic: url("../icons/ic_add_hover_15px.png");
+}
+
+.table-button-remove {
+	-fx-graphic: url("../icons/ic_remove_15px.png");
+}
+
+.table-button-remove:hover {
+	-fx-graphic: url("../icons/ic_remove_hover_15px.png");
+}
+
+.button-folder {
+	-fx-graphic: url("@../icons/ic_folder_15px.png");
+}
+
+/*
+ * TABLE
+ */
+ .table-view {
+ }
+ 
+/* poner la cabecera, las filas y las filas por las que pasa el ratón en blanco */
+.table-view .column-header, .table-view .filler, .table-row-cell:empty, .table-cell:empty:hover {
+	-fx-background-color: white;
+	-fx-border-color: white;
+}
+
+/* formato para las celdas del tableview */
+.table-cell {     
+    -fx-padding: 0.5em 0.5em 0.1em 0.3em;
+    -fx-border-color: transparent;  
+    -fx-font: 13px "Segoe UI";
+    -fx-border-insets: 0;
+}
+
+/* centrar y cambiar color de los titulos de columnas */
+.table-view .column-header .label{
+    -fx-text-fill: #52677A;
+    -fx-alignment: BASELINE-LEFT ;
+}
+
+/* color de fondo para cuando el raton este sobre la celda */
+.table-cell:hover {
+    -fx-background-color: rgb(232,232,232);
+}
+
+.table-row-cell, .table-row-cell:odd {
+	-fx-background-color: white;
+}
+
+/* color de una fila seleccionada por el usuario */
+.table-view:row-selection .table-row-cell:filled:selected { 
+    -fx-background-color: #ededed;
+    -fx-text-fill: black;
+}
+
+/* eliminar border del table que aparece cuando el mismo tiene el foco */
+.table-view, .table-view:focused {
+  -fx-border-color: white;
+  -fx-background-color: transparent,-fx-box-border,-fx-control-inner-background;
+  -fx-background-insets: -1.4, 0, 1;
+  -fx-background-radius: 1.4, 0, 0;
+}
+
+/*
+ * GRID
+ */
+ .grid {
+ 	-fx-padding: 20;
+ }
+ 
+/*
+ * VBOX
+ */
+ .vbox {
+ 	-fx-padding: 10;
+ } 
