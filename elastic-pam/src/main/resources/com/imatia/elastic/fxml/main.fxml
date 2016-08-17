@@ -8,68 +8,57 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <Accordion BorderPane.alignment="CENTER">
-        <panes>
-          <TitledPane animated="false" text="Actualizaciones">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="menu-background">
-                     <children>
-                        <VBox prefHeight="324.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="En curso" >
-								   <graphic>
-								      <ImageView fitWidth="15" preserveRatio="true" smooth="true">
-								        <image>
-								          <Image url="@../icons/ic_autorenew_15px.png"/>
-								        </image>
-								      </ImageView>
-								   </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="Histórico" >
-								   <graphic>
-								      <ImageView fitWidth="15" preserveRatio="true" smooth="true">
-								        <image>
-								          <Image url="@../icons/ic_history_15px.png"/>
-								        </image>
-								      </ImageView>
-								   </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="Configuración" >
-								   <graphic>
-								      <ImageView fitWidth="15" preserveRatio="true" smooth="true">
-								        <image>
-								          <Image url="@../icons/ic_list_15px.png"/>
-								        </image>
-								      </ImageView>
-								   </graphic>
-                              </Button>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-          <TitledPane animated="false" text="Backups">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="menu-background">
-                     <children>
-                        <VBox prefHeight="324.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-          <TitledPane animated="false" text="Monitorizar">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="menu-background">
-                     <children>
-                        <VBox prefHeight="324.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-        </panes>
-      </Accordion>
-   </left>
-</BorderPane>
+<FlowPane styleClass="menu-background" stylesheets="@../css/nav.css" xmlns="http://javafx.com/javafx/8" fx:controller="com.imatia.elastic.controllers.MainMenuController"
+	xmlns:fx="http://javafx.com/fxml">
+
+	<VBox prefHeight="70.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<children>
+			<Label text="ePAM" styleClass="menu-title" />
+			<ImageView fitWidth="200" preserveRatio="true" smooth="true">
+				<image>
+					<Image url="@../images/horizontal_bar.png" />
+				</image>
+			</ImageView>
+			<Label text="Actualizaciones" styleClass="menu-label" />
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="En curso">
+				<graphic>
+					<ImageView fitWidth="15" preserveRatio="true" smooth="true" styleClass="menu-button-image">
+						<image>
+							<Image url="@../icons/ic_autorenew_15px.png" />
+						</image>
+					</ImageView>
+				</graphic>
+			</Button>
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="Histórico">
+				<graphic>
+					<ImageView fitWidth="15" preserveRatio="true" smooth="true">
+						<image>
+							<Image url="@../icons/ic_history_15px.png" />
+						</image>
+					</ImageView>
+				</graphic>
+			</Button>
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button" text="Configuración" onAction="#showApplicationsForm">
+				<graphic>
+					<ImageView fitWidth="15" preserveRatio="true" smooth="true">
+						<image>
+							<Image url="@../icons/ic_list_15px.png" />
+						</image>
+					</ImageView>
+				</graphic>
+			</Button>
+			<ImageView fitWidth="200" preserveRatio="true" smooth="true">
+				<image>
+					<Image url="@../images/horizontal_bar.png" />
+				</image>
+			</ImageView>
+			<Label text="Backups" styleClass="menu-label" />
+			<ImageView fitWidth="200" preserveRatio="true" smooth="true">
+				<image>
+					<Image url="@../images/horizontal_bar.png" />
+				</image>
+			</ImageView>
+			<Label text="Monitorizar" styleClass="menu-label" />
+		</children>
+	</VBox>
+</FlowPane>

@@ -2,6 +2,7 @@ package com.imatia.elastic.controllers;
 
 import com.imatia.elastic.db.daos.ApplicationDAO;
 import com.imatia.elastic.db.objects.Application;
+import com.imatia.elastic.util.FormUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,34 @@ public class IMApplications {
 	@FXML
 	public void initialize() {
 		loadData();
+
+		applicationsTableView.setOnMousePressed(e -> {
+			if (e.isPrimaryButtonDown() && e.getClickCount() == 2) {
+
+				Application application = applicationsTableView.getSelectionModel().getSelectedItem();
+
+				Object controller = new FormUtils().showForm(FormUtils.APPLICATION_FORM);
+
+				if (controller instanceof IMApplication) {
+					((IMApplication) controller).loadRecord(application);
+				}
+			}
+		});
+	}
+
+	@FXML
+	public void addApplication() {
+		new FormUtils().showForm(FormUtils.APPLICATION_FORM);
+	}
+
+	@FXML
+	public void removeApplication() {
+
+		Application application = applicationsTableView.getSelectionModel().getSelectedItem();
+
+		ApplicationDAO dao = new ApplicationDAO();
+
+		dao.delete(application);
 	}
 
 	/**
@@ -27,7 +56,6 @@ public class IMApplications {
 	 */
 	private void loadData() {
 		applicationsTableView.setItems(getDBItems());
-		applicationsTableView.refresh();
 	}
 
 	/**

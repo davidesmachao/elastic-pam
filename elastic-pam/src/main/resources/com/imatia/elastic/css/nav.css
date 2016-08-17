@@ -1,0 +1,56 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*
+ * MENU
+ */
+.menu-background {
+	-fx-background-color: #1d2b36;
+}
+
+/*
+ * MENU - LABEL
+ */
+.menu-label{
+    -fx-background-color: transparent;
+    -fx-text-fill: #507da7;
+    -fx-font-size: 13;
+    -fx-padding: 5;
+}
+
+.menu-title {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c4cedb;
+    -fx-font-size: 24;
+    -fx-font-weight: BOLD;
+    -fx-padding: 5;
+}
+
+/*
+ * MENU - BUTTON
+ */
+.menu-button {
+    -fx-background-color: #1d2b36;
+    -fx-border-width: 2px;
+    -fx-border-color: #1d2b36;
+    -fx-font-size: 13;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: #71a1b8;
+    -fx-padding: 10;
+    -fx-alignment: baseline-left;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover{
+    -fx-text-fill: #87c2de;
+}
+
+.menu-button:pressed {
+	-fx-text-fill: #58859c;
+}
+
+/*
+ * FORM
+ */
+.form-background {
+	-fx-background-color: white;	
+}

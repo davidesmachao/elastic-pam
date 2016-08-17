@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -24,11 +23,14 @@ public class ElasticPamApplication extends Application {
 	 */
 	private static final Logger LOGGER = Logger.getLogger("elastic-pam");
 
+	public static Logger getLogger() {
+		return LOGGER;
+	}
+
 	public static void main(String[] args) {
 
 		// Launch application
 		launch(args);
-
 	}
 
 	/**
@@ -42,10 +44,13 @@ public class ElasticPamApplication extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
-			// Load application
-			loadApplication(primaryStage);
+			loadScene(primaryStage);
 
-			setUserAgentStylesheet(STYLESHEET_MODENA);
+			loadStyleSheets(primaryStage);
+
+			loadConfiguration(primaryStage);
+
+			primaryStage.show();
 
 		} catch (IOException ex) {
 			LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
@@ -53,28 +58,49 @@ public class ElasticPamApplication extends Application {
 	}
 
 	/**
-	 * This method will load and show the application
+	 * Load application's scene
 	 * 
 	 * @param primaryStage
 	 * @throws IOException
 	 */
-	private void loadApplication(Stage primaryStage) throws IOException {
+	private void loadScene(Stage primaryStage) throws IOException {
 
 		// loading FXML resources
-		URL menuBarUrl = getClass().getResource("fxml/menubar.fxml");
-		MenuBar bar = FXMLLoader.load(menuBarUrl);
+		URL emptyUrl = getClass().getResource("fxml/formempty.fxml");
+		Pane emptyPane = FXMLLoader.load(emptyUrl);
 
 		URL mainUrl = getClass().getResource("fxml/main.fxml");
 		Pane paneOne = FXMLLoader.load(mainUrl);
+		paneOne.setPrefWidth(200);
 
 		// constructing our scene using the static root
-		root.setTop(bar);
+		root.setCenter(emptyPane);
 		root.setLeft(paneOne);
+		root.setTop(null);
+		root.setBottom(null);
+		root.setRight(null);
 
-		Scene scene = new Scene(root, 640, 480);
-		scene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
+		primaryStage.setScene(new Scene(root, 900, 650));
+	}
 
-		primaryStage.setScene(scene);
-		primaryStage.show();
+	/**
+	 * Load application styles
+	 * 
+	 * @param primaryStage
+	 */
+	private void loadStyleSheets(Stage primaryStage) {
+		primaryStage.getScene().getStylesheets().add(getClass().getResource("css/nav.css").toExternalForm());
+
+		setUserAgentStylesheet(STYLESHEET_MODENA);
+	}
+
+	/**
+	 * Load main configurations
+	 * 
+	 * @param primaryStage
+	 */
+	private void loadConfiguration(Stage primaryStage) {
+		primaryStage.setResizable(false);
+		primaryStage.setTitle("Elastic PAM");
 	}
 }

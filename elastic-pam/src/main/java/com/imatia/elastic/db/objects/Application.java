@@ -5,9 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class with the information of a database application object
+ * 
+ * @author David Rodriguez
+ */
 @Entity
 @Table(name = "applications")
-public class Application {
+public class Application extends MainObject {
 
 	@Id
 	@Column(name = "application_id")
