@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.imatia.elastic.db.daos.ApplicationDAO;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,11 +52,20 @@ public class ElasticPamApplication extends Application {
 
 			loadConfiguration(primaryStage);
 
+			openDatabaseConnection();
+
 			primaryStage.show();
 
 		} catch (IOException ex) {
 			LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 		}
+	}
+
+	@Override
+	public void stop() throws Exception {
+		super.stop();
+
+		closeDatabaseConnection();
 	}
 
 	/**
@@ -66,17 +77,21 @@ public class ElasticPamApplication extends Application {
 	private void loadScene(Stage primaryStage) throws IOException {
 
 		// loading FXML resources
-		URL emptyUrl = getClass().getResource("fxml/formempty.fxml");
-		Pane emptyPane = FXMLLoader.load(emptyUrl);
+		URL emptyFormUrl = getClass().getResource("fxml/formempty.fxml");
+		Pane centerPane = FXMLLoader.load(emptyFormUrl);
 
-		URL mainUrl = getClass().getResource("fxml/main.fxml");
-		Pane paneOne = FXMLLoader.load(mainUrl);
-		paneOne.setPrefWidth(200);
+		URL leftMenuUrl = getClass().getResource("fxml/leftmenu.fxml");
+		Pane leftPane = FXMLLoader.load(leftMenuUrl);
+		leftPane.setPrefWidth(200);
+
+		URL headerUrl = getClass().getResource("fxml/header.fxml");
+		Pane topPane = FXMLLoader.load(headerUrl);
+		topPane.setPrefWidth(200);
 
 		// constructing our scene using the static root
-		root.setCenter(emptyPane);
-		root.setLeft(paneOne);
-		root.setTop(null);
+		root.setCenter(centerPane);
+		root.setLeft(leftPane);
+		root.setTop(topPane);
 		root.setBottom(null);
 		root.setRight(null);
 
@@ -102,5 +117,23 @@ public class ElasticPamApplication extends Application {
 	private void loadConfiguration(Stage primaryStage) {
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Elastic PAM");
+	}
+
+	/**
+	 * Initialize database connection
+	 */
+	private void openDatabaseConnection() {
+		ApplicationDAO someDao = new ApplicationDAO();
+
+		someDao.openCurrentSession();
+	}
+
+	/**
+	 * Closes database connection
+	 */
+	private void closeDatabaseConnection() {
+		ApplicationDAO someDao = new ApplicationDAO();
+
+		someDao.closeCurrentSession();
 	}
 }

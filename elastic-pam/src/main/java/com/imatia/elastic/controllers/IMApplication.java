@@ -26,4 +26,16 @@ public class IMApplication extends CrudController {
 	TextField tomcat_application_name;
 	@FXML
 	TextField tomcat_folder;
+
+	public void lookupDatabaseBackupFolder() {
+		// TODO: not implemented method
+	}
+
+	public void lookupTomcatFolder() {
+		// TODO: not implemented method
+	}
+
+	public void lookupTomcatApplicationBackupFolder() {
+		// TODO: not implemented method
+	}
 }

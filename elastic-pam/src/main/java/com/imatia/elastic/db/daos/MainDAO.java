@@ -29,7 +29,7 @@ public abstract class MainDAO {
 	}
 
 	public void closeCurrentSession() {
-		currentSession.close();
+		getSessionFactory().close();
 	}
 
 	public void closeCurrentSessionwithTransaction() {

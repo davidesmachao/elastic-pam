@@ -4,7 +4,7 @@ import com.imatia.elastic.util.FormUtils;
 
 import javafx.event.ActionEvent;
 
-public class MainMenuController {
+public class LeftMenuController {
 
 	/**
 	 * Opens application's form on right pane

@@ -7,6 +7,10 @@
 	-fx-background-color: #1d2b36;
 }
 
+.menu-bar {
+	-fx-background-color: white;
+}
+
 /*
  * MENU - LABEL
  */
@@ -28,7 +32,7 @@
 /*
  * MENU - BUTTON
  */
-.menu-button {
+.menu-button, .menu-button-current, .menu-button-historical, .menu-button-configuration {
     -fx-background-color: #1d2b36;
     -fx-border-width: 2px;
     -fx-border-color: #1d2b36;
@@ -40,12 +44,36 @@
     -fx-cursor: hand;
 }
 
-.menu-button:hover{
+.menu-button:hover, .menu-button-current:hover, .menu-button-historical:hover, .menu-button-configuration:hover {
     -fx-text-fill: #87c2de;
 }
 
-.menu-button:pressed {
+.menu-button:pressed, .menu-button-current:pressed, .menu-button-historical:pressed, .menu-button-configuration:pressed {
 	-fx-text-fill: #58859c;
+}
+
+.menu-button-current {
+	-fx-graphic: url("../icons/ic_autorenew_15px.png");
+}
+
+.menu-button-current:hover {
+	-fx-graphic: url("../icons/ic_autorenew_hover_15px.png");
+}
+
+.menu-button-historical {
+	-fx-graphic: url("../icons/ic_history_15px.png");
+}
+
+.menu-button-historical:hover {
+	-fx-graphic: url("../icons/ic_history_hover_15px.png");
+}
+
+.menu-button-configuration {
+	-fx-graphic: url("../icons/ic_list_15px.png");
+}
+
+.menu-button-configuration:hover {
+	-fx-graphic: url("../icons/ic_list_hover_15px.png");
 }
 
 /*

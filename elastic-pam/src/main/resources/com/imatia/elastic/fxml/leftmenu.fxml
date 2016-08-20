@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane stylesheets="@../css/nav.css" styleClass="menu-background" xmlns="http://javafx.com/javafx/8" fx:controller="com.imatia.elastic.controllers.LeftMenuController"
+	xmlns:fx="http://javafx.com/fxml">
+
+	<VBox prefHeight="70.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<children>
+			<Label text="Updates" styleClass="menu-label" />
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-current" text="In progress" />
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-historical" text="Historical" />
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-configuration" text="Configuration" onAction="#showApplicationsForm" />
+			<ImageView fitWidth="200">
+				<image>
+					<Image url="@../images/horizontal_bar.png" />
+				</image>
+			</ImageView>
+			<Label text="Backups" styleClass="menu-label" />
+			<ImageView fitWidth="200">
+				<image>
+					<Image url="@../images/horizontal_bar.png" />
+				</image>
+			</ImageView>
+			<Label text="Monitorizar" styleClass="menu-label" />
+		</children>
+	</VBox>
+</FlowPane>

@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  styleClass="vbox" stylesheets="@../css/forms.css"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imatia.elastic.controllers.IMApplication">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imatia.elastic.controllers.IMApplication">
 	<children>
 		<GridPane styleClass="grid">
 			<columnConstraints>
@@ -17,8 +16,8 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label prefHeight="25.0" text="Aplicacion" GridPane.rowIndex="0" />
-				<TextField fx:id="application_description" prefHeight="25.0" prefWidth="154.0" promptText="Descripción" GridPane.rowIndex="1" />
+				<Label prefHeight="25.0" text="Application" GridPane.rowIndex="0" />
+				<TextField fx:id="application_description" prefHeight="25.0" prefWidth="154.0" promptText="Description" GridPane.rowIndex="1" />
 			</children>
 		</GridPane>
 		<GridPane styleClass="grid">
@@ -33,14 +32,14 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Base de datos" GridPane.rowIndex="0" />
+				<Label text="Database" GridPane.rowIndex="0" />
 				<TextField fx:id="database_url" prefHeight="25.0" promptText="URL" GridPane.rowIndex="1" />
-				<TextField fx:id="database_user" prefHeight="25.0" promptText="Usuario" GridPane.rowIndex="2" />
-				<PasswordField fx:id="database_password" prefHeight="25.0" promptText="Contraseña" GridPane.rowIndex="3" />
+				<TextField fx:id="database_user" prefHeight="25.0" promptText="User" GridPane.rowIndex="2" />
+				<PasswordField fx:id="database_password" prefHeight="25.0" promptText="Password" GridPane.rowIndex="3" />
 				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
 					<children>
-						<TextField fx:id="database_backup_folder" prefHeight="25.0" promptText="Directorio copia de seguridad" />
-						<Button text="Button" styleClass="button-folder"/>
+						<TextField fx:id="database_backup_folder" prefHeight="25.0" prefWidth="620.0" promptText="Database backup folder" />
+						<Button onAction="#lookupDatabaseBackupFolder" styleClass="button-folder" />
 					</children>
 				</HBox>
 			</children>
@@ -56,10 +55,20 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Configuracion del Tomcat" GridPane.rowIndex="0" />
-				<TextField fx:id="tomcat_application_name" prefHeight="25.0" promptText="Nombre de la aplicacion" GridPane.rowIndex="1" />
-				<TextField fx:id="tomcat_folder" prefHeight="25.0" promptText="Directorio Tomcat" GridPane.rowIndex="2" />
-				<TextField fx:id="tomcat_application_backup_folder" prefHeight="25.0" promptText="Directorio copia de seguridad" GridPane.rowIndex="3" />
+				<Label text="Tomcat configuration" GridPane.rowIndex="0" />
+				<TextField fx:id="tomcat_application_name" prefHeight="25.0" promptText="Application name" GridPane.rowIndex="1" />
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+					<children>
+						<TextField fx:id="tomcat_folder" prefHeight="25.0" prefWidth="727.0" promptText="Tomcat folder" />
+						<Button onAction="#lookupTomcatFolder" styleClass="button-folder" />
+					</children>
+				</HBox>
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+					<children>
+						<TextField fx:id="tomcat_application_backup_folder" prefHeight="25.0" prefWidth="760.0" promptText="Tomcat application backup folder" />
+						<Button onAction="#lookupTomcatApplicationBackupFolder" styleClass="button-folder" />
+					</children>
+				</HBox>
 			</children>
 		</GridPane>
 		<GridPane styleClass="grid">
@@ -72,9 +81,9 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Cuenta Google" GridPane.rowIndex="0" />
-				<TextField fx:id="google_account_name" prefHeight="25.0" promptText="Usuario" GridPane.rowIndex="1" />
-				<PasswordField fx:id="google_account_password" prefHeight="25.0" promptText="Contraseña" GridPane.rowIndex="2" />
+				<Label text="Google account" GridPane.rowIndex="0" />
+				<TextField fx:id="google_account_name" prefHeight="25.0" promptText="User" GridPane.rowIndex="1" />
+				<PasswordField fx:id="google_account_password" prefHeight="25.0" promptText="Password" GridPane.rowIndex="2" />
 			</children>
 		</GridPane>
 	</children>
