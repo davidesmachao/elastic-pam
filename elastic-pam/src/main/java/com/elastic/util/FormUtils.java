@@ -1,9 +1,9 @@
-package com.imatia.elastic.util;
+package com.elastic.util;
 
 import java.io.IOException;
 import java.net.URL;
 
-import com.imatia.elastic.ElasticPamApplication;
+import com.elastic.ElasticPamApplication;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,11 +23,11 @@ public class FormUtils {
 	/**
 	 * Form with a table listing all configured applications
 	 */
-	public static final String APPLICATIONS_FORM = "../fxml/formapplications.fxml";
+	public static final String APPLICATIONS_FORM = "../fxml/applicationsform.fxml";
 	/**
 	 * Form to edit or insert a new application
 	 */
-	public static final String APPLICATION_FORM = "../fxml/formapplication.fxml";
+	public static final String APPLICATION_FORM = "../fxml/applicationform.fxml";
 
 	/**
 	 * Shows indicated form on a new window

@@ -1,9 +1,12 @@
-package com.imatia.elastic.db.objects;
+package com.elastic.db.objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.elastic.db.daos.ApplicationDAO;
+import com.elastic.db.daos.MainDAO;
 
 /**
  * Class with the information of a database application object
@@ -149,5 +152,10 @@ public class Application extends MainObject {
 
 	public void setDownloadFolder(String downloadFolder) {
 		this.downloadFolder = downloadFolder;
+	}
+
+	@Override
+	public MainDAO getDAO() {
+		return new ApplicationDAO();
 	}
 }

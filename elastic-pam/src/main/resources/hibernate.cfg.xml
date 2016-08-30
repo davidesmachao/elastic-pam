@@ -29,6 +29,6 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
         
-		<mapping class="com.imatia.elastic.db.objects.Application" />
+		<mapping class="com.elastic.db.objects.Application" />
 	</session-factory>
 </hibernate-configuration>

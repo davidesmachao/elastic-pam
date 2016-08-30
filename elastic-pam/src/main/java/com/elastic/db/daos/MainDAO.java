@@ -1,31 +1,27 @@
-package com.imatia.elastic.interfaces;
+package com.elastic.db.daos;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Main interface for application's DAO objects
+ * The main DAO object will implement transactions and sessions control
  * 
  * @author David Rodriguez
- *
- * @param <T>
- * @param <Id>
  */
-public interface IDAOInterface<T, Id extends Serializable> {
+public abstract class MainDAO<T> {
 
 	/**
 	 * Persist object in database
 	 * 
 	 * @param entity
 	 */
-	public void persist(T entity);
+	public abstract void persist(T entity);
 
 	/**
 	 * Updates the object in database
 	 * 
 	 * @param entity
 	 */
-	public void update(T entity);
+	public abstract void update(T entity);
 
 	/**
 	 * Returns the object with indicated id
@@ -33,25 +29,24 @@ public interface IDAOInterface<T, Id extends Serializable> {
 	 * @param id
 	 * @return
 	 */
-	public T findById(Id id);
+	public abstract T findById(Integer id);
 
 	/**
 	 * Deletes the object from the database
 	 * 
 	 * @param entity
 	 */
-	public void delete(T entity);
+	public abstract void delete(T entity);
 
 	/**
 	 * Returns all objects
 	 * 
 	 * @return
 	 */
-	public List<T> findAll();
+	public abstract List<T> findAll();
 
 	/**
 	 * Deletes all objects
 	 */
-	public void deleteAll();
-
+	public abstract void deleteAll();
 }

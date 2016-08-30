@@ -1,6 +1,6 @@
-package com.imatia.elastic.controllers;
+package com.elastic.controllers;
 
-import com.imatia.elastic.util.FormUtils;
+import com.elastic.util.FormUtils;
 
 import javafx.event.ActionEvent;
 

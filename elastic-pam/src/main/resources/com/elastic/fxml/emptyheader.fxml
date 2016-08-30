@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<HBox stylesheets="@../css/nav.css" xmlns="http://javafx.com/javafx/8">
+<HBox stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8">
 	<children>
 		<VBox styleClass="menu-background" prefHeight="45" prefWidth="200">
 			<children>
@@ -16,7 +16,15 @@
 				</ImageView>
 			</children>
 		</VBox>
+
 		<AnchorPane styleClass="menu-bar">
+
+			<HBox fx:id="menu_bar" styleClass="menu-bar" xmlns:fx="http://javafx.com/fxml" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="0.0">
+				<children>
+
+				</children>
+			</HBox>
+
 			<ImageView fitWidth="710" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0">
 				<image>
 					<Image url="@../images/horizontal_bar_white.png" />

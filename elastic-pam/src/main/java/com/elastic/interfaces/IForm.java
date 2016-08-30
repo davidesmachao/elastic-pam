@@ -1,4 +1,4 @@
-package com.imatia.elastic.interfaces;
+package com.elastic.interfaces;
 
 import javafx.fxml.FXML;
 

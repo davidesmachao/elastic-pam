@@ -1,36 +1,41 @@
-package com.imatia.elastic.controllers;
+package com.elastic.controllers;
 
-import com.imatia.elastic.db.daos.ApplicationDAO;
-import com.imatia.elastic.db.objects.Application;
-import com.imatia.elastic.util.FormUtils;
+import com.elastic.controllers.crud.CrudController;
+import com.elastic.db.daos.ApplicationDAO;
+import com.elastic.db.objects.Application;
+import com.elastic.db.objects.MainObject;
+import com.elastic.util.FormUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
-public class IMApplications {
+public class IMApplications extends MainController {
 
 	@FXML
 	private TableView<Application> applicationsTableView;
 
 	public IMApplications() {
-		// Empty constructor
+		super();
 	}
 
+	@Override
 	@FXML
 	public void initialize() {
+		super.initialize();
+
 		loadData();
 
 		applicationsTableView.setOnMousePressed(e -> {
 			if (e.isPrimaryButtonDown() && e.getClickCount() == 2) {
 
-				Application application = applicationsTableView.getSelectionModel().getSelectedItem();
+				MainObject application = applicationsTableView.getSelectionModel().getSelectedItem();
 
 				Object controller = new FormUtils().showForm(FormUtils.APPLICATION_FORM);
 
-				if (controller instanceof IMApplication) {
-					((IMApplication) controller).loadRecord(application);
+				if (controller instanceof CrudController) {
+					((CrudController) controller).loadRecord(application);
 				}
 			}
 		});
@@ -44,15 +49,15 @@ public class IMApplications {
 	@FXML
 	public void removeApplication() {
 
-		Application application = applicationsTableView.getSelectionModel().getSelectedItem();
+		MainObject application = applicationsTableView.getSelectionModel().getSelectedItem();
 
-		ApplicationDAO dao = new ApplicationDAO();
+		application.getDAO().delete(application);
 
-		dao.delete(application);
+		loadData();
 	}
 
 	/**
-	 * Loads form data
+	 * Loads applications from database and sets them on their table
 	 */
 	private void loadData() {
 		applicationsTableView.setItems(getDBItems());

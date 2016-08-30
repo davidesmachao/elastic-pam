@@ -1,11 +1,11 @@
-package com.imatia.elastic;
+package com.elastic;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.imatia.elastic.db.daos.ApplicationDAO;
+import com.elastic.db.connection.ConnectionManager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +17,13 @@ import javafx.stage.Stage;
 public class ElasticPamApplication extends Application {
 
 	/**
-	 * Creating a static root to pass to the controller
+	 * Reference to application's the root pane
 	 */
 	private static BorderPane root = new BorderPane();
+	/**
+	 * Reference to application's stage
+	 */
+	private static Stage stage;
 	/**
 	 * Application logger
 	 */
@@ -36,10 +40,21 @@ public class ElasticPamApplication extends Application {
 	}
 
 	/**
-	 * Just a root getter for the controller to use
+	 * Returns application's root pane
+	 * 
+	 * @return
 	 */
 	public static BorderPane getRoot() {
 		return root;
+	}
+
+	/**
+	 * Return application's stage
+	 * 
+	 * @return
+	 */
+	public static Stage getStage() {
+		return stage;
 	}
 
 	@Override
@@ -76,16 +91,19 @@ public class ElasticPamApplication extends Application {
 	 */
 	private void loadScene(Stage primaryStage) throws IOException {
 
+		// Keep the reference to the application stage
+		ElasticPamApplication.stage = primaryStage;
+
 		// loading FXML resources
-		URL emptyFormUrl = getClass().getResource("fxml/formempty.fxml");
+		URL emptyFormUrl = getClass().getResource("fxml/emptyform.fxml");
 		Pane centerPane = FXMLLoader.load(emptyFormUrl);
 
 		URL leftMenuUrl = getClass().getResource("fxml/leftmenu.fxml");
 		Pane leftPane = FXMLLoader.load(leftMenuUrl);
 		leftPane.setPrefWidth(200);
 
-		URL headerUrl = getClass().getResource("fxml/header.fxml");
-		Pane topPane = FXMLLoader.load(headerUrl);
+		URL emptyheaderUrl = getClass().getResource("fxml/emptyheader.fxml");
+		Pane topPane = FXMLLoader.load(emptyheaderUrl);
 		topPane.setPrefWidth(200);
 
 		// constructing our scene using the static root
@@ -123,17 +141,13 @@ public class ElasticPamApplication extends Application {
 	 * Initialize database connection
 	 */
 	private void openDatabaseConnection() {
-		ApplicationDAO someDao = new ApplicationDAO();
-
-		someDao.openCurrentSession();
+		new ConnectionManager().openCurrentSession();
 	}
 
 	/**
 	 * Closes database connection
 	 */
 	private void closeDatabaseConnection() {
-		ApplicationDAO someDao = new ApplicationDAO();
-
-		someDao.closeCurrentSession();
+		new ConnectionManager().closeCurrentSession();
 	}
 }
