@@ -1,10 +1,14 @@
 package com.elastic.controllers;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
 
 import com.elastic.ElasticPamApplication;
 import com.elastic.controllers.crud.CrudController;
 import com.elastic.db.objects.Application;
+import com.elastic.oauth.OAuthManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -79,5 +83,20 @@ public class IMApplication extends CrudController {
 		}
 
 		return path;
+	}
+
+	@Override
+	protected void beforeSaveAction() {
+		super.beforeSaveAction();
+
+		List<String> modifiedFields = changesController.getModifiedFields();
+
+		if (modifiedFields.contains(google_account_name.getId())) {
+			try {
+				OAuthManager.requestAuth(google_account_name.getText());
+			} catch (IOException e) {
+				ElasticPamApplication.getLogger().log(Level.SEVERE, e.getMessage(), e);
+			}
+		}
 	}
 }

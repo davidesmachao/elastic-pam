@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<HBox stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplication">
+	<children>
+		<VBox styleClass="menu-background" prefHeight="45" prefWidth="200">
+			<children>
+				<Label text="ePAM" styleClass="menu-title" />
+				<ImageView fitWidth="200">
+					<image>
+						<Image url="@../images/horizontal_bar.png" />
+					</image>
+				</ImageView>
+			</children>
+		</VBox>
+
+		<AnchorPane styleClass="menu-bar">
+
+			<HBox styleClass="menu-bar" xmlns:fx="http://javafx.com/fxml" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<Button text="Save" onAction="#save" />
+					<Button text="Remove" onAction="#remove" />
+				</children>
+			</HBox>
+
+			<ImageView fitWidth="710" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0">
+				<image>
+					<Image url="@../images/horizontal_bar_white.png" />
+				</image>
+			</ImageView>
+		</AnchorPane>
+	</children>
+</HBox>

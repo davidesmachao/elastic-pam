@@ -7,16 +7,19 @@ import java.util.logging.Level;
 
 import com.elastic.ElasticPamApplication;
 import com.elastic.controllers.MainController;
+import com.elastic.controllers.crud.changes.CrudChangesController;
+import com.elastic.controllers.crud.states.CrudInsertState;
+import com.elastic.controllers.crud.states.CrudUpdateState;
+import com.elastic.controllers.crud.states.MainCrudState;
+import com.elastic.controllers.crud.states.State;
 import com.elastic.db.objects.MainObject;
 
-import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.HBox;
 
 /**
@@ -28,15 +31,29 @@ import javafx.scene.layout.HBox;
 public abstract class CrudController extends MainController {
 
 	/**
+	 * Controller to monitor all field value changes and its related actions
+	 */
+	protected CrudChangesController changesController;
+
+	/**
 	 * Controller database object class. This is the class where all CRUD
 	 * operations will be made
 	 */
 	private MainObject genericObject;
 
+	/**
+	 * Current form state (ie. insert or update)
+	 */
 	private State state = new State();
 
+	/**
+	 * The reference to form's save button
+	 */
 	private Button saveButton;
 
+	/**
+	 * The reference to form's remove button
+	 */
 	private Button removeButton;
 
 	/**
@@ -48,7 +65,30 @@ public abstract class CrudController extends MainController {
 	public CrudController(MainObject genericObject) {
 
 		// Stores the class to perform CRUD operations
-		setGenericObject(genericObject);
+		this.genericObject = genericObject;
+	}
+
+	/**
+	 * Add buttons to application header
+	 */
+	private void setButtons() {
+
+		HBox menuBar = (HBox) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
+
+		// Create save button
+		saveButton = new Button();
+		saveButton.getStyleClass().add("table-button-add");
+		saveButton.setOnAction(e -> save(e));
+
+		menuBar.getChildren().add(saveButton);
+
+		// Create remove button
+		removeButton = new Button();
+		removeButton.getStyleClass().add("table-button-remove");
+		removeButton.setOnAction(e -> remove(e));
+
+		menuBar.getChildren().add(removeButton);
+
 	}
 
 	@Override
@@ -56,12 +96,12 @@ public abstract class CrudController extends MainController {
 		super.initialize();
 
 		// Add action listeners to all controller fields
-		addActionListeners();
+		changesController = new CrudChangesController(this);
 
 		setButtons();
 
 		// Set state
-		MainCrudState updateState = new CrudInsertState(saveButton, removeButton);
+		MainCrudState updateState = new CrudInsertState(this);
 		updateState.setState(state);
 	}
 
@@ -74,11 +114,13 @@ public abstract class CrudController extends MainController {
 	 */
 	public void loadRecord(MainObject genericObject) {
 
+		changesController.setChangeControllerEnabled(false);
+
 		// Set this object
-		setGenericObject(genericObject);
+		this.genericObject = genericObject;
 
 		// Set state
-		MainCrudState updateState = new CrudUpdateState(saveButton, removeButton);
+		MainCrudState updateState = new CrudUpdateState(this);
 		updateState.setState(state);
 
 		// Load record
@@ -105,75 +147,55 @@ public abstract class CrudController extends MainController {
 				}
 			}
 		}
+
+		changesController.setChangeControllerEnabled(true);
 	}
 
 	/**
-	 * This method will add an action listener to all fields of the CRUD
-	 * controller. These action listeners
+	 * This method will be called just before the save action is performed
 	 */
-	private void addActionListeners() {
-		Field[] controllerFields = this.getClass().getDeclaredFields();
-
-		for (Field field : controllerFields) {
-			try {
-
-				field.setAccessible(true);
-
-				Object fieldInstance = field.get(this);
-
-				if (fieldInstance instanceof TextField) {
-					((TextField) fieldInstance).textProperty().addListener(e -> handleChangeListener(e));
-				} else if (fieldInstance instanceof CheckBox) {
-					((CheckBox) fieldInstance).setOnInputMethodTextChanged(e -> handleInputMethod(e));
-				}
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				ElasticPamApplication.getLogger().log(Level.WARNING,
-						"Can not set value change listener to field " + field.getName(), e);
-			}
-		}
+	protected void beforeSaveAction() {
+		// Empty method. Useful to override
 	}
 
 	/**
-	 * Add buttons to application header
+	 * This method will be called just before the delete action is performed
 	 */
-	private void setButtons() {
-
-		HBox menuBar = (HBox) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
-
-		// Create save button
-		saveButton = new Button();
-		saveButton.getStyleClass().add("table-button-add");
-		saveButton.setOnAction(e -> save(e));
-
-		menuBar.getChildren().add(saveButton);
-
-		// Create remove button
-		removeButton = new Button();
-		removeButton.getStyleClass().add("table-button-remove");
-		removeButton.setOnAction(e -> remove(e));
-
-		menuBar.getChildren().add(removeButton);
-
+	protected void beforeRemoveAction() {
+		// Empty method. Useful to override
 	}
 
-	private void handleInputMethod(InputMethodEvent e) {
-		System.out.println();
-	}
-
-	private void handleChangeListener(Observable e) {
-		System.out.println();
-	}
-
-	public MainObject getGenericObject() {
-		return genericObject;
-	}
-
-	public void setGenericObject(MainObject genericObject) {
-		this.genericObject = genericObject;
-	}
-
+	/**
+	 * Perform save button's action
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void save(ActionEvent event) {
+		beforeSaveAction();
+
+		state.getState().onSaveAction(genericObject);
+	}
+
+	/**
+	 * Perform remove button's action
+	 * 
+	 * @param event
+	 */
+	@FXML
+	public void remove(ActionEvent event) {
+		beforeRemoveAction();
+
+		state.getState().onRemoveAction(genericObject);
+	}
+
+	/**
+	 * This method will return form data
+	 * 
+	 * @return a Map where the key is the column name and its value is it's
+	 *         current value
+	 */
+	public Map<String, Object> getValues() {
 		Map<String, Object> values = new HashMap<>();
 
 		Field[] controllerFields = this.getClass().getDeclaredFields();
@@ -199,13 +221,21 @@ public abstract class CrudController extends MainController {
 			}
 		}
 
-		getGenericObject().setValues(values);
-
-		getGenericObject().getDAO().update(getGenericObject());
+		return values;
 	}
 
-	@FXML
-	public void remove(ActionEvent event) {
-		getGenericObject().getFieldValues();
+	/**
+	 * @return form's save button
+	 */
+	public Button getSaveButton() {
+		return saveButton;
 	}
+
+	/**
+	 * @return form's remove button
+	 */
+	public Button getRemoveButton() {
+		return removeButton;
+	}
+
 }
