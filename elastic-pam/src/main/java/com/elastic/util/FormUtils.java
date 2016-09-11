@@ -21,6 +21,10 @@ import javafx.stage.Stage;
 public class FormUtils {
 
 	/**
+	 * Form with a big dropbox to add files to a new installation
+	 */
+	public static final String ADD_FILES_TO_UPDATE_FORM = "../fxml/addfilestoupdateform.fxml";
+	/**
 	 * Form with a table listing all configured applications
 	 */
 	public static final String APPLICATIONS_FORM = "../fxml/applicationsform.fxml";

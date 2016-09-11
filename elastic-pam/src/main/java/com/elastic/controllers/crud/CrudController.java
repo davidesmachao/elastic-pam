@@ -85,6 +85,12 @@ public abstract class CrudController extends MainController {
 		// Create remove button
 		removeButton = new Button();
 		removeButton.getStyleClass().add("table-button-remove");
+		// DropShadow dropShadow2 = new DropShadow();
+		// dropShadow2.setOffsetX(0.0);
+		// dropShadow2.setOffsetY(5.0);
+		// dropShadow2.setRadius(2.0);
+		// dropShadow2.setColor(Color.LIGHTGRAY);
+		// removeButton.setEffect(dropShadow2);
 		removeButton.setOnAction(e -> remove(e));
 
 		menuBar.getChildren().add(removeButton);

@@ -11,17 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.*?>
 
-<VBox styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.elastic.controllers.IMApplications">
+<VBox styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplications">
 	<children>
 		<HBox alignment="bottom_right" GridPane.columnIndex="0">
 			<children>
-				<Button styleClass="table-button-add" onAction="#addApplication"/>
-				<Button styleClass="table-button-remove" onAction="#removeApplication"/>
+				<Button onAction="#addApplication" styleClass="table-button-add" />
+				<Button onAction="#removeApplication" styleClass="table-button-remove" />
 			</children>
 		</HBox>
-		<TableView fx:id="applicationsTableView" nodeOrientation="LEFT_TO_RIGHT" styleClass="table-view"
-			AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" >
+		<TableView fx:id="applicationsTableView" nodeOrientation="LEFT_TO_RIGHT" styleClass="table-view" stylesheets="@../css/forms.css" AnchorPane.bottomAnchor="20.0"
+			AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" VBox.vgrow="ALWAYS">
 			<columns>
 				<TableColumn text="Description">
 					<cellValueFactory>

@@ -1,13 +1,28 @@
 
+* {
+ 	-fx-font-family:  "Roboto";
+}
+/*
+ * Colors definition
+ */
+.root { 
+	menu-background: #1d2b36;
+	menu-bar: #FFFFFF;
+	menu-labels: #507da7;
+	menu-title: #c4cedb;
+	menu-button: #71a1b8;
+	menu-button-hover: #87c2de;
+	menu-button-pressed: #58859c;
+}
 /*
  * MENU
  */
 .menu-background {
-	-fx-background-color: #1d2b36;
+	-fx-background-color: menu-background  ;
 }
 
 .menu-bar {
-	-fx-background-color: white;
+	-fx-background-color: menu-bar;
 }
 
 /*
@@ -15,40 +30,40 @@
  */
 .menu-label{
     -fx-background-color: transparent;
-    -fx-text-fill: #507da7;
-    -fx-font-size: 13;
-    -fx-padding: 5;
+    -fx-text-fill: menu-labels;
+    -fx-font-size: 13.0;
+    -fx-padding: 5.0;
 }
 
 .menu-title {
     -fx-background-color: transparent;
-    -fx-text-fill: #c4cedb;
-    -fx-font-size: 24;
+    -fx-text-fill: menu-title;
+    -fx-font-size: 24.0;
     -fx-font-weight: BOLD;
-    -fx-padding: 5;
+    -fx-padding: 5.0;
 }
 
 /*
  * MENU - BUTTON
  */
 .menu-button, .menu-button-current, .menu-button-historical, .menu-button-configuration {
-    -fx-background-color: #1d2b36;
-    -fx-border-width: 2px;
-    -fx-border-color: #1d2b36;
-    -fx-font-size: 13;
+    -fx-background-color: menu-background;
+    -fx-border-width: 2.0px;
+    -fx-border-color: menu-background;
+    -fx-font-size: 13.0;
     -fx-font-weight: BOLD;
-    -fx-text-fill: #71a1b8;
-    -fx-padding: 10;
+    -fx-text-fill: menu-button;
+    -fx-padding: 10.0;
     -fx-alignment: baseline-left;
     -fx-cursor: hand;
 }
 
 .menu-button:hover, .menu-button-current:hover, .menu-button-historical:hover, .menu-button-configuration:hover {
-    -fx-text-fill: #87c2de;
+    -fx-text-fill: menu-button-hover;
 }
 
 .menu-button:pressed, .menu-button-current:pressed, .menu-button-historical:pressed, .menu-button-configuration:pressed {
-	-fx-text-fill: #58859c;
+	-fx-text-fill: menu-button-pressed;
 }
 
 .menu-button-current {
@@ -59,12 +74,20 @@
 	-fx-graphic: url("../icons/ic_autorenew_hover_15px.png");
 }
 
+.menu-button-current:pressed {
+	-fx-graphic: url("../icons/ic_autorenew_pressed_15px.png");
+}
+
 .menu-button-historical {
 	-fx-graphic: url("../icons/ic_history_15px.png");
 }
 
 .menu-button-historical:hover {
 	-fx-graphic: url("../icons/ic_history_hover_15px.png");
+}
+
+.menu-button-historical:pressed {
+	-fx-graphic: url("../icons/ic_history_pressed_15px.png");
 }
 
 .menu-button-configuration {
@@ -74,6 +97,11 @@
 .menu-button-configuration:hover {
 	-fx-graphic: url("../icons/ic_list_hover_15px.png");
 }
+
+.menu-button-configuration:pressed {
+	-fx-graphic: url("../icons/ic_list_pressed_15px.png");
+}
+
 
 /*
  * FORM
