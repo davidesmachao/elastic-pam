@@ -6,17 +6,17 @@
 /*
  * BUTTONS
  */
-.table-button-add, .table-button-remove, .button-folder {
+.table-button-add, .table-button-remove, .table-button-back, .button-folder {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 3, 0, 1, 4);
 	-fx-background-color: transparent;
 	-fx-border-color: transparent;
 }
 
-.table-button-add:hover, .table-button-remove:hover, .button-folder:hover {
+.table-button-add:hover, .table-button-remove:hover, .table-button-back:hover, .button-folder:hover {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 5, 0, 1, 5);
 }
 
-.table-button-add:pressed, .table-button-remove:pressed, .button-folder:pressed {
+.table-button-add:pressed, .table-button-remove:pressed, .table-button-back:pressed, .button-folder:pressed {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 3, 0, 1, 3);
 }
 
@@ -42,6 +42,18 @@
 
 .table-button-remove:pressed {
 	-fx-graphic: url("../icons/ic_remove_pressed_20px.png");
+}
+
+.table-button-back {
+	-fx-graphic: url("../icons/ic_arrow_back_20px.png");
+}
+
+.table-button-back:hover {
+	-fx-graphic: url("../icons/ic_arrow_back_hover_20px.png");
+}
+
+.table-button-back:pressed {
+	-fx-graphic: url("../icons/ic_arrow_back_20px.png");
 }
 
 .button-folder {
@@ -121,7 +133,14 @@
  
  
  /*
-  * Drag files
+  * LABEL
+  */
+ .heading-label {
+    -fx-font-size: 15.0;
+ }
+ 
+ /*
+  * DRAG FILES
   */
  .dragFiles {
  	-fx-font-size: 33px;

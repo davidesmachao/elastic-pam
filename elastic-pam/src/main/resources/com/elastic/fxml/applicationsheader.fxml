@@ -18,10 +18,6 @@
 		</VBox>
 
 		<AnchorPane styleClass="menu-bar">
-
-			<!-- <HBox styleClass="menu-bar" xmlns:fx="http://javafx.com/fxml" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="0.0"> <children> <Button styleClass="table-button-add" /> <Button 
-				styleClass="table-button-remove" /> </children> </HBox> -->
-
 			<ImageView fitWidth="710" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0">
 				<image>
 					<Image url="@../images/horizontal_bar_white.png" />

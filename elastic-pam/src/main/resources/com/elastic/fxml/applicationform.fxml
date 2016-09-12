@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplication">
+<VBox styleClass="card" stylesheets="@../css/forms.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplication"
+prefWidth="680">
 	<children>
 		<GridPane styleClass="grid">
 			<columnConstraints>
@@ -16,8 +18,13 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label prefHeight="25.0" text="Application" GridPane.rowIndex="0" />
-				<TextField fx:id="application_description" prefHeight="25.0" prefWidth="154.0" promptText="Description" GridPane.rowIndex="1" />
+				<Label styleClass="heading-label" prefHeight="25.0" text="Application" GridPane.rowIndex="0" />
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="Description" />
+						<TextField fx:id="application_description" prefHeight="25.0" promptText="Description" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
 			</children>
 		</GridPane>
 		<GridPane styleClass="grid">
@@ -32,13 +39,29 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Database" GridPane.rowIndex="0" />
-				<TextField fx:id="database_url" prefHeight="25.0" promptText="URL" GridPane.rowIndex="1" />
-				<TextField fx:id="database_user" prefHeight="25.0" promptText="User" GridPane.rowIndex="2" />
-				<PasswordField fx:id="database_password" prefHeight="25.0" promptText="Password" GridPane.rowIndex="3" />
+				<Label styleClass="heading-label" text="Database" GridPane.rowIndex="0" />
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="URL" />
+						<TextField fx:id="database_url" prefHeight="25.0" promptText="URL" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="User" />
+						<TextField fx:id="database_user" prefHeight="25.0" promptText="User" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="Password" />
+						<PasswordField fx:id="database_password" prefHeight="25.0" promptText="Password" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
 				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
 					<children>
-						<TextField fx:id="database_backup_folder" prefHeight="25.0" prefWidth="620.0" promptText="Database backup folder" />
+						<Label prefHeight="25.0" prefWidth="110.0" text="Backup folder" />
+						<TextField fx:id="database_backup_folder" prefHeight="25.0" prefWidth="453.0" promptText="Database backup folder" HBox.hgrow="ALWAYS" />
 						<Button onAction="#lookupDatabaseBackupFolder" styleClass="button-folder" />
 					</children>
 				</HBox>
@@ -55,17 +78,24 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Tomcat configuration" GridPane.rowIndex="0" />
-				<TextField fx:id="tomcat_application_name" prefHeight="25.0" promptText="Application name" GridPane.rowIndex="1" />
+				<Label styleClass="heading-label" text="Tomcat configuration" GridPane.rowIndex="0" />
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="Application name" />
+						<TextField fx:id="tomcat_application_name" prefHeight="25.0" promptText="Application name" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
 				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
 					<children>
-						<TextField fx:id="tomcat_folder" prefHeight="25.0" prefWidth="727.0" promptText="Tomcat folder" />
+						<Label prefHeight="25.0" prefWidth="110.0" text="Folder" />
+						<TextField fx:id="tomcat_folder" prefHeight="25.0" prefWidth="468.0" promptText="Tomcat folder" HBox.hgrow="ALWAYS" />
 						<Button onAction="#lookupTomcatFolder" styleClass="button-folder" />
 					</children>
 				</HBox>
 				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
 					<children>
-						<TextField fx:id="tomcat_application_backup_folder" prefHeight="25.0" prefWidth="760.0" promptText="Tomcat application backup folder" />
+						<Label prefHeight="25.0" prefWidth="110.0" text="Backup folder" />
+						<TextField fx:id="tomcat_application_backup_folder" prefHeight="25.0" prefWidth="470.0" promptText="Tomcat application backup folder" HBox.hgrow="ALWAYS" />
 						<Button onAction="#lookupTomcatApplicationBackupFolder" styleClass="button-folder" />
 					</children>
 				</HBox>
@@ -81,9 +111,19 @@
 				<RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label text="Google account" GridPane.rowIndex="0" />
-				<TextField fx:id="google_account_name" prefHeight="25.0" promptText="User" GridPane.rowIndex="1" />
-				<PasswordField fx:id="google_account_password" prefHeight="25.0" promptText="Password" GridPane.rowIndex="2" />
+				<Label styleClass="heading-label" text="Google account" GridPane.rowIndex="0" />
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="User" />
+						<TextField fx:id="google_account_name" prefHeight="25.0" promptText="User" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
+				<HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+					<children>
+						<Label prefHeight="25.0" prefWidth="110.0" text="Password" />
+						<PasswordField fx:id="google_account_password" prefHeight="25.0" promptText="Password" HBox.hgrow="ALWAYS" />
+					</children>
+				</HBox>
 			</children>
 		</GridPane>
 	</children>

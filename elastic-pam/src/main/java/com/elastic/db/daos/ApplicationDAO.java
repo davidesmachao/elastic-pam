@@ -41,7 +41,10 @@ public class ApplicationDAO extends MainDAO<Application> {
 
 	@Override
 	public void delete(Application entity) {
-		new ConnectionManager().getCurrentSession().delete(entity);
+		ConnectionManager con = new ConnectionManager();
+		Session session = con.openCurrentSessionwithTransaction();
+		session.delete(entity);
+		con.closeCurrentSessionwithTransaction();
 	}
 
 	@Override
