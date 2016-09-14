@@ -7,6 +7,7 @@ import java.util.logging.Level;
 
 import com.elastic.ElasticPamApplication;
 import com.elastic.controllers.crud.CrudController;
+import com.elastic.controllers.forms.FormLoader;
 import com.elastic.db.objects.Application;
 import com.elastic.oauth.OAuthManager;
 
@@ -98,5 +99,19 @@ public class IMApplication extends CrudController {
 				ElasticPamApplication.getLogger().log(Level.SEVERE, e.getMessage(), e);
 			}
 		}
+	}
+
+	@Override
+	protected void afterSaveAction() {
+		super.afterSaveAction();
+
+		new FormLoader().showForm(FormLoader.APPLICATIONS_FORM);
+	}
+
+	@Override
+	protected void afterRemoveAction() {
+		super.afterRemoveAction();
+
+		new FormLoader().showForm(FormLoader.APPLICATIONS_FORM);
 	}
 }

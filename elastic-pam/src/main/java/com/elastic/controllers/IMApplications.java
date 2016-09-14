@@ -1,10 +1,10 @@
 package com.elastic.controllers;
 
 import com.elastic.controllers.crud.CrudController;
+import com.elastic.controllers.forms.FormLoader;
 import com.elastic.db.daos.ApplicationDAO;
 import com.elastic.db.objects.Application;
 import com.elastic.db.objects.MainObject;
-import com.elastic.util.FormUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +32,7 @@ public class IMApplications extends MainController {
 
 				MainObject application = applicationsTableView.getSelectionModel().getSelectedItem();
 
-				Object controller = new FormUtils().showForm(FormUtils.APPLICATION_FORM);
+				Object controller = new FormLoader().showForm(FormLoader.APPLICATION_FORM);
 
 				if (controller instanceof CrudController) {
 					((CrudController) controller).loadRecord(application);
@@ -43,7 +43,7 @@ public class IMApplications extends MainController {
 
 	@FXML
 	public void addApplication() {
-		new FormUtils().showForm(FormUtils.APPLICATION_FORM);
+		new FormLoader().showForm(FormLoader.APPLICATION_FORM);
 	}
 
 	@FXML

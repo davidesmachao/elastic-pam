@@ -12,15 +12,21 @@ import com.elastic.controllers.crud.states.CrudInsertState;
 import com.elastic.controllers.crud.states.CrudUpdateState;
 import com.elastic.controllers.crud.states.MainCrudState;
 import com.elastic.controllers.crud.states.State;
+import com.elastic.controllers.forms.FormLoader;
 import com.elastic.db.objects.MainObject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 
 /**
  * Common class of all controllers where common CRUD operations should be
@@ -73,15 +79,28 @@ public abstract class CrudController extends MainController {
 	 */
 	private void setButtons() {
 
-		HBox menuBar = (HBox) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
+		Pane menuBar = (Pane) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
 
-		// Create back button
+		// Create back button inside a StackPane
+		StackPane stack = new StackPane();
+
+		Button backButton = new Button();
+		backButton.getStyleClass().add("table-button-back");
+		backButton.setOnAction(e -> back(e));
+
+		stack.getChildren().add(backButton);
+		stack.setAlignment(Pos.CENTER_LEFT);
+		StackPane.setMargin(backButton, new Insets(0, 560, 0, 0));
+
+		menuBar.getChildren().add(stack);
+		HBox.setHgrow(stack, Priority.ALWAYS);
 
 		// Create save button
 		saveButton = new Button();
 		saveButton.getStyleClass().add("table-button-add");
 		saveButton.setOnAction(e -> save(e));
 
+		HBox.setHgrow(saveButton, Priority.ALWAYS);
 		menuBar.getChildren().add(saveButton);
 
 		// Create remove button
@@ -89,11 +108,7 @@ public abstract class CrudController extends MainController {
 		removeButton.getStyleClass().add("table-button-remove");
 		removeButton.setOnAction(e -> remove(e));
 
-		Button backButton = new Button();
-		backButton.getStyleClass().add("table-button-back");
-
 		menuBar.getChildren().add(removeButton);
-
 	}
 
 	@Override
@@ -171,6 +186,24 @@ public abstract class CrudController extends MainController {
 	}
 
 	/**
+	 * This method will be called just after the save action is performed
+	 */
+	protected void afterSaveAction() {
+		// Empty method. Useful to override
+	}
+
+	/**
+	 * This method will be called just after the delete action is performed
+	 */
+	protected void afterRemoveAction() {
+		// Empty method. Useful to override
+	}
+
+	public void back(ActionEvent e) {
+		FormLoader.showLastForm();
+	}
+
+	/**
 	 * Perform save button's action
 	 * 
 	 * @param event
@@ -180,6 +213,8 @@ public abstract class CrudController extends MainController {
 		beforeSaveAction();
 
 		state.getState().onSaveAction(genericObject);
+
+		afterSaveAction();
 	}
 
 	/**
@@ -192,6 +227,8 @@ public abstract class CrudController extends MainController {
 		beforeRemoveAction();
 
 		state.getState().onRemoveAction(genericObject);
+
+		afterRemoveAction();
 	}
 
 	/**

@@ -1,7 +1,7 @@
-package com.elastic.util;
+package com.elastic.controllers.forms;
 
 import java.io.IOException;
-import java.net.URL;
+import java.util.Stack;
 
 import com.elastic.ElasticPamApplication;
 
@@ -13,25 +13,49 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Common form utilities
+ * This class handles the showing of the different forms of the application. It
+ * also has a stack with the list of opened forms that could be invoked to show
+ * last form.
  * 
  * @author David Rodriguez
  *
  */
-public class FormUtils {
+public class FormLoader {
 
 	/**
 	 * Form with a big dropbox to add files to a new installation
 	 */
-	public static final String ADD_FILES_TO_UPDATE_FORM = "../fxml/addfilestoupdateform.fxml";
+	public static final String ADD_FILES_TO_UPDATE_FORM = "/com/elastic/fxml/addfilestoupdateform.fxml";
 	/**
 	 * Form with a table listing all configured applications
 	 */
-	public static final String APPLICATIONS_FORM = "../fxml/applicationsform.fxml";
+	public static final String APPLICATIONS_FORM = "/com/elastic/fxml/applicationsform.fxml";
 	/**
 	 * Form to edit or insert a new application
 	 */
-	public static final String APPLICATION_FORM = "../fxml/applicationform.fxml";
+	public static final String APPLICATION_FORM = "/com/elastic/fxml/applicationform.fxml";
+
+	/**
+	 * Stack with all forms showed on the application
+	 */
+	private static Stack<String> formStack = new Stack<>();
+
+	/**
+	 * Shows last form opened on the application
+	 * 
+	 * @return
+	 */
+	public static Object showLastForm() {
+		Object controller = null;
+
+		formStack.pop();
+
+		if (!formStack.isEmpty()) {
+			controller = new FormLoader().showForm(formStack.pop());
+		}
+
+		return controller;
+	}
 
 	/**
 	 * Shows indicated form on a new window
@@ -44,14 +68,17 @@ public class FormUtils {
 		FXMLLoader fxmlLoader = null;
 
 		try {
-			String url = this.getClass().getResource(formName).toExternalForm();
-
-			fxmlLoader = new FXMLLoader(new URL(url));
+			// Load form
+			fxmlLoader = new FXMLLoader(getClass().getResource(formName));
 
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.show();
+
+			// Add it to the stack
+			formStack.push(formName);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -69,14 +96,16 @@ public class FormUtils {
 		FXMLLoader fxmlLoader = null;
 
 		try {
-			String url = this.getClass().getResource(formName).toExternalForm();
-
-			fxmlLoader = new FXMLLoader(new URL(url));
+			// Load form
+			fxmlLoader = new FXMLLoader(getClass().getResource(formName));
 
 			Pane paneOne = fxmlLoader.load();
 
 			BorderPane border = ElasticPamApplication.getRoot();
 			border.setCenter(paneOne);
+
+			// Add it to the stack
+			formStack.push(formName);
 
 		} catch (IOException e) {
 			e.printStackTrace();

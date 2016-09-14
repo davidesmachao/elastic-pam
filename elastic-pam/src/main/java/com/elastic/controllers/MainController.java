@@ -3,7 +3,7 @@ package com.elastic.controllers;
 import com.elastic.ElasticPamApplication;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -36,7 +36,7 @@ public class MainController {
 
 	private void cleanHeader() {
 
-		HBox menuBar = (HBox) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
+		Pane menuBar = (Pane) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
 
 		menuBar.getChildren().clear();
 	}
