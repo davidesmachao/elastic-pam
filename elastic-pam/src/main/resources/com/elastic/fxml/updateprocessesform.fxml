@@ -11,21 +11,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.*?>
 
-<VBox styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplications">
+<VBox styleClass="vbox" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMUpdateProcesses">
 	<children>
-      <Label styleClass="heading-label" text="Applications" />
+      <Label styleClass="heading-label" text="Update processes" />
 		<HBox alignment="bottom_right" GridPane.columnIndex="0">
 			<children>
-				<Button onAction="#addApplication" styleClass="table-button-add" />
-				<Button onAction="#removeApplication" styleClass="table-button-remove" />
+				<Button onAction="#addProcess" styleClass="table-button-add" />
+				<Button onAction="#removeProcess" styleClass="table-button-remove" />
 			</children>
 		</HBox>
-		<TableView fx:id="applicationsTableView" nodeOrientation="LEFT_TO_RIGHT" styleClass="table-view" stylesheets="@../css/forms.css" AnchorPane.bottomAnchor="20.0"
+		<TableView fx:id="updateProcessesTableView" nodeOrientation="LEFT_TO_RIGHT" styleClass="table-view" stylesheets="@../css/forms.css" AnchorPane.bottomAnchor="20.0"
 			AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" VBox.vgrow="ALWAYS">
 			<columns>
 				<TableColumn text="Description">
 					<cellValueFactory>
-						<PropertyValueFactory property="applicationDescription" />
+						<PropertyValueFactory property="updateProcessDescription" />
 					</cellValueFactory>
 				</TableColumn>
 			</columns>

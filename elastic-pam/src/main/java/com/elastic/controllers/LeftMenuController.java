@@ -13,7 +13,7 @@ public class LeftMenuController {
 	/**
 	 * Opens application's form on right pane
 	 */
-	public void showApplicationsForm(ActionEvent event) {
-		new FormLoader().showForm(FormLoader.APPLICATIONS_FORM);
+	public void showConfigurationsForm(ActionEvent event) {
+		new FormLoader().showForm(FormLoader.CONFIGURATIONS_FORM);
 	}
 }

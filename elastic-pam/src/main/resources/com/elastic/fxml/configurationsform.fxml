@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="700.0" stylesheets="@../css/forms.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.elastic.controllers.ConfigurationsController">
+	<columnConstraints>
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+	</rowConstraints>
+	<children>
+		<VBox alignment="CENTER" maxHeight="200.0" maxWidth="200.0" styleClass="card" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+			<children>
+				<Button alignment="CENTER" mnemonicParsing="false" styleClass="button-configuration-application" onAction="#openConfigurationApplicationForm"/>
+				<Label alignment="CENTER" styleClass="heading-label" text="Applications" />
+			</children>
+			<padding>
+				<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+			</padding>
+		</VBox>
+		<VBox alignment="CENTER" maxHeight="200.0" maxWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="card" GridPane.columnIndex="1">
+			<children>
+				<Button alignment="CENTER" mnemonicParsing="false" styleClass="button-configuration-update-processes" onAction="#openUpdateProcessesForm"/>
+				<Label alignment="CENTER" styleClass="heading-label" text="Update processes" />
+			</children>
+			<padding>
+				<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+			</padding>
+			<opaqueInsets>
+				<Insets />
+			</opaqueInsets>
+		</VBox>
+	</children>
+</GridPane>

@@ -15,7 +15,7 @@
 			<Label text="Updates" styleClass="menu-label" />
 			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-current" text="In progress" onAction="#showNewUpdateForm" />
 			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-historical" text="Historical" />
-			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-configuration" text="Configuration" onAction="#showApplicationsForm" />
+			<Button mnemonicParsing="false" prefHeight="23.0" prefWidth="184.0" styleClass="menu-button-configuration" text="Configuration" onAction="#showConfigurationsForm" />
 			<ImageView fitWidth="200">
 				<image>
 					<Image url="@../images/horizontal_bar.png" />

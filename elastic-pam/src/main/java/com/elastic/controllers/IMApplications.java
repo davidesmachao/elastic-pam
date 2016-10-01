@@ -18,6 +18,8 @@ public class IMApplications extends MainController {
 
 	public IMApplications() {
 		super();
+
+		showBackButton = true;
 	}
 
 	@Override

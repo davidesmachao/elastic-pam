@@ -31,6 +31,10 @@ public class FormLoader {
 	 */
 	public static final String APPLICATIONS_FORM = "/com/elastic/fxml/applicationsform.fxml";
 	/**
+	 * Form with a table listing all configured applications
+	 */
+	public static final String CONFIGURATIONS_FORM = "/com/elastic/fxml/configurationsform.fxml";
+	/**
 	 * Form to edit or insert a new application
 	 */
 	public static final String APPLICATION_FORM = "/com/elastic/fxml/applicationform.fxml";

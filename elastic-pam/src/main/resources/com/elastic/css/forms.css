@@ -6,17 +6,17 @@
 /*
  * BUTTONS
  */
-.table-button-add, .table-button-remove, .table-button-back, .button-folder {
+.table-button-add, .table-button-remove, .table-button-back, .button-folder, .button-configuration-application, .button-configuration-update-processes {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 3, 0, 1, 4);
 	-fx-background-color: transparent;
 	-fx-border-color: transparent;
 }
 
-.table-button-add:hover, .table-button-remove:hover, .table-button-back:hover, .button-folder:hover {
+.table-button-add:hover, .table-button-remove:hover, .table-button-back:hover, .button-folder:hover, .button-configuration-application:hover, .button-configuration-update-processes:hover {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 5, 0, 1, 5);
 }
 
-.table-button-add:pressed, .table-button-remove:pressed, .table-button-back:pressed, .button-folder:pressed {
+.table-button-add:pressed, .table-button-remove:pressed, .table-button-back:pressed, .button-folder:pressed, button-configuration-application:pressed, .button-configuration-update-processes:pressed {
 	-fx-effect:  dropshadow(three-pass-box, lightgrey, 3, 0, 1, 3);
 }
 
@@ -66,6 +66,22 @@
 
 .button-folder:pressed {
 	-fx-graphic: url("../icons/ic_folder_pressed_15px.png");
+}
+
+.button-configuration-application {
+	-fx-graphic: url("../icons/ic_widgets_black_100px.png");
+}
+
+.button-configuration-application:hover {
+	-fx-graphic: url("../icons/ic_widgets_black_hover_100px.png");
+}
+
+.button-configuration-application:pressed {
+	-fx-graphic: url("../icons/ic_widgets_black_pressed_100px.png");
+}
+
+.button-configuration-update-processes {
+	-fx-graphic: url("../icons/ic_update_black_100px.png");
 }
 
 /*

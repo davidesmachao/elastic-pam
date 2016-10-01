@@ -41,6 +41,8 @@ public class IMApplication extends CrudController {
 
 	public IMApplication() {
 		super(new Application());
+
+		showBackButton = true;
 	}
 
 	public void lookupDatabaseBackupFolder() {

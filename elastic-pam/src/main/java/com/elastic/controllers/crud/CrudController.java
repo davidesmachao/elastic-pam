@@ -12,13 +12,10 @@ import com.elastic.controllers.crud.states.CrudInsertState;
 import com.elastic.controllers.crud.states.CrudUpdateState;
 import com.elastic.controllers.crud.states.MainCrudState;
 import com.elastic.controllers.crud.states.State;
-import com.elastic.controllers.forms.FormLoader;
 import com.elastic.db.objects.MainObject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -26,7 +23,6 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 
 /**
  * Common class of all controllers where common CRUD operations should be
@@ -77,23 +73,11 @@ public abstract class CrudController extends MainController {
 	/**
 	 * Add buttons to application header
 	 */
-	private void setButtons() {
+	@Override
+	protected void setButtons() {
+		super.setButtons();
 
 		Pane menuBar = (Pane) ElasticPamApplication.getRoot().getTop().lookup("#menu_bar");
-
-		// Create back button inside a StackPane
-		StackPane stack = new StackPane();
-
-		Button backButton = new Button();
-		backButton.getStyleClass().add("table-button-back");
-		backButton.setOnAction(e -> back(e));
-
-		stack.getChildren().add(backButton);
-		stack.setAlignment(Pos.CENTER_LEFT);
-		StackPane.setMargin(backButton, new Insets(0, 560, 0, 0));
-
-		menuBar.getChildren().add(stack);
-		HBox.setHgrow(stack, Priority.ALWAYS);
 
 		// Create save button
 		saveButton = new Button();
@@ -117,8 +101,6 @@ public abstract class CrudController extends MainController {
 
 		// Add action listeners to all controller fields
 		changesController = new CrudChangesController(this);
-
-		setButtons();
 
 		// Set state
 		MainCrudState updateState = new CrudInsertState(this);
@@ -197,10 +179,6 @@ public abstract class CrudController extends MainController {
 	 */
 	protected void afterRemoveAction() {
 		// Empty method. Useful to override
-	}
-
-	public void back(ActionEvent e) {
-		FormLoader.showLastForm();
 	}
 
 	/**

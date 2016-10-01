@@ -58,6 +58,11 @@ public class Application extends MainObject {
 		// empty constructor
 	}
 
+	@Override
+	public MainDAO<?> getDAO() {
+		return new ApplicationDAO();
+	}
+
 	public int getApplicationId() {
 		return applicationId;
 	}
@@ -152,10 +157,5 @@ public class Application extends MainObject {
 
 	public void setDownloadFolder(String downloadFolder) {
 		this.downloadFolder = downloadFolder;
-	}
-
-	@Override
-	public MainDAO getDAO() {
-		return new ApplicationDAO();
 	}
 }
