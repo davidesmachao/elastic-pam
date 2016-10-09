@@ -27,17 +27,25 @@ public class FormLoader {
 	 */
 	public static final String ADD_FILES_TO_UPDATE_FORM = "/com/elastic/fxml/addfilestoupdateform.fxml";
 	/**
-	 * Form with a table listing all configured applications
+	 * Form with the configuration menu
 	 */
-	public static final String APPLICATIONS_FORM = "/com/elastic/fxml/applicationsform.fxml";
+	public static final String CONFIGURATIONS_FORM = "/com/elastic/fxml/config/configurationsform.fxml";
 	/**
 	 * Form with a table listing all configured applications
 	 */
-	public static final String CONFIGURATIONS_FORM = "/com/elastic/fxml/configurationsform.fxml";
+	public static final String APPLICATIONS_FORM = "/com/elastic/fxml/config/applications/applicationsform.fxml";
 	/**
 	 * Form to edit or insert a new application
 	 */
-	public static final String APPLICATION_FORM = "/com/elastic/fxml/applicationform.fxml";
+	public static final String APPLICATION_FORM = "/com/elastic/fxml/config/applications/applicationform.fxml";
+	/**
+	 * Form with a table listing all configured applications
+	 */
+	public static final String UPDATE_PROCESSES_FORM = "/com/elastic/fxml/config/updateprocesses/updateprocessesform.fxml";
+	/**
+	 * Form to edit or insert a new application
+	 */
+	public static final String UPDATE_PROCESS_FORM = "/com/elastic/fxml/config/updateprocesses/updateprocessform.fxml";
 
 	/**
 	 * Stack with all forms showed on the application

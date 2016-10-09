@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<VBox styleClass="card" stylesheets="@../css/forms.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.IMApplication"
+<VBox styleClass="card" stylesheets="com/elastic/css/forms.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elastic.controllers.config.applications.ApplicationController"
 prefWidth="680">
 	<children>
 		<GridPane styleClass="grid">

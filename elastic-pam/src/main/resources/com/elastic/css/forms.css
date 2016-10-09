@@ -84,6 +84,14 @@
 	-fx-graphic: url("../icons/ic_update_black_100px.png");
 }
 
+.button-configuration-update-processes:hover {
+	-fx-graphic: url("../icons/ic_update_black_hover_100px.png");
+}
+
+.button-configuration-update-processes:pressed {
+	-fx-graphic: url("../icons/ic_update_black_pressed_100px.png");
+}
+
 /*
  * TABLE
  */

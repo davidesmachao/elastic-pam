@@ -1,4 +1,4 @@
-package com.elastic.controllers;
+package com.elastic.controllers.config.applications;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 
-public class IMApplication extends CrudController {
+public class ApplicationController extends CrudController {
 
 	@FXML
 	TextField application_description;
@@ -39,7 +39,7 @@ public class IMApplication extends CrudController {
 	@FXML
 	TextField tomcat_folder;
 
-	public IMApplication() {
+	public ApplicationController() {
 		super(new Application());
 
 		showBackButton = true;

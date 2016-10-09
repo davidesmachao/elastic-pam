@@ -1,5 +1,6 @@
-package com.elastic.controllers;
+package com.elastic.controllers.config.applications;
 
+import com.elastic.controllers.MainController;
 import com.elastic.controllers.crud.CrudController;
 import com.elastic.controllers.forms.FormLoader;
 import com.elastic.db.daos.ApplicationDAO;
@@ -11,12 +12,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
-public class IMApplications extends MainController {
+public class ApplicationsController extends MainController {
 
 	@FXML
 	private TableView<Application> applicationsTableView;
 
-	public IMApplications() {
+	public ApplicationsController() {
 		super();
 
 		showBackButton = true;
